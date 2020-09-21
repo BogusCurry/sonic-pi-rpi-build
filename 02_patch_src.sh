@@ -17,6 +17,16 @@ patch -Np1 -i "../patches/gui_paths.patch"
 # enable Raspberry Pi transparency
 patch -Np1 -i "../patches/rpi_transparency.patch"
 
+# see files in the load/save dialog window
+# (white on a white background)
+patch -Np1 -i "../patches/rpi_color_fix.patch"
+
+# add 8GB RPi encoding
+patch -Np1 -i "../patches/rpi_8gb_encoding.patch"
+
+# fix error line numbers
+patch -Np1 -i "../patches/rpi_error_line_numbers.patch"
+
 # devendor qscintilla-qt5: https://github.com/samaaron/sonic-pi/issues/2278
 patch -Np1 -i "../patches/devendor_qscintilla-qt5.patch"
 
