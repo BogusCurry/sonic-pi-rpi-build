@@ -13,6 +13,4 @@ cd "${srcdir}"
 # NOTE: this can only be done after running
 # app/server/ruby/bin/compile-extensions.rb, as ruby-wavefile uses a
 # hardcoded location of a file
-#
-# TODO: move to patch stage after devendoring more ruby gems
 patch -Np1 -i "../patches/ruby_paths.patch"
