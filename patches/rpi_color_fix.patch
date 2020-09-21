@@ -1,0 +1,15 @@
+diff -ruN a/app/gui/qt/theme/app.qss c/app/gui/qt/theme/app.qss
+--- a/app/gui/qt/theme/app.qss
++++ c/app/gui/qt/theme/app.qss
+@@ -517,7 +517,10 @@ QScrollBar::add-page:vertical, QScrollBa
+     background: none;
+ }
+
+-
++QWidget
++{
++    background: paneColor;
++}
+
+ QPushButton
+ {
