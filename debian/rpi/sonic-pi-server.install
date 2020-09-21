@@ -1,0 +1,15 @@
+app/server/ruby/core.rb                                                 usr/lib/sonic-pi/server
+app/server/ruby/bin/*                                                   usr/lib/sonic-pi/server/bin
+app/server/ruby/lib                                                     usr/lib/sonic-pi/server/
+app/server/ruby/vendor/ruby-beautify/lib/ruby-beautify-legacy.rb        usr/lib/sonic-pi/server/vendor/ruby-beautify/lib/
+app/server/ruby/vendor/ruby-beautify/lib/ruby-beautify-legacy           usr/lib/sonic-pi/server/vendor/ruby-beautify/lib/
+app/server/ruby/vendor/fast_osc-0.0.12/lib/fast_osc.rb                  usr/lib/sonic-pi/server/vendor/fast_osc-0.0.12/lib/
+app/server/ruby/vendor/fast_osc-0.0.12/lib/fast_osc                     usr/lib/sonic-pi/server/vendor/fast_osc-0.0.12/lib/
+app/server/ruby/vendor/ruby-aubio-prerelease/lib/aubio                  usr/lib/sonic-pi/server/vendor/ruby-aubio-prerelease/lib/
+app/server/ruby/vendor/ruby-aubio-prerelease/lib/aubio.rb               usr/lib/sonic-pi/server/vendor/ruby-aubio-prerelease/lib/
+
+etc/synthdefs/compiled                                             usr/share/sonic-pi/synthdefs
+etc/snippets                                                       usr/share/sonic-pi
+etc/examples                                                       usr/share/sonic-pi
+
+debian/extra/README-JACKD                                          usr/share/doc/sonic-pi

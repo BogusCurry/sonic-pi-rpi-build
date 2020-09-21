@@ -7,34 +7,4 @@ Guidance was provided by Robin Newman, who created a ['community version' of Son
 
 
 ### TODO
-* devendor boost from GUI components (only headers required during build time)
-* devendor ruby-ast
-* devendor ruby-atomic (bin)
-* devendor ruby-benchmark-ips
-* devendor ruby-blankslate
-* devendor ruby-did_you_mean (bin)
-* devendor ruby-fast_osc (bin)
-* devendor ruby-gettext
-* devendor ruby-hamster
-* devendor ruby-interception (bin)
-* devendor ruby-locale
-* devendor ruby-memoist
-* devendor ruby-metaclass
-* devendor ruby-parser
-* devendor ruby-parslet
-* devendor ruby-rubame
-* devendor ruby-aubio-prerelease
-* devendor ruby-beautify
-* devendor ruby-text
-* devendor ruby-thread_safe
-* devendor ruby-wavefile
-* devendor ruby-websocket
-* move stage 5 patch to stage 2
-
-Note - the following are not packages available on Debian:
-* ruby-did_you_mean
-* ruby-fast_osc
-* ruby-interception
-* ruby-rubame
-* ruby-aubio-prerelease
-* ruby-thread_safe
+* Migrate to building from debian/rpi

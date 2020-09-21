@@ -1,0 +1,71 @@
+Description: Use some vendored libs explicitly
+ Debian disables auto-loading of sonic-pi's vendored ruby libs, but
+ fast_osc and aubio do not seem to be in Debian, so load the vendored versions
+ explicitly for now.
+Author: Peter Michael Green <plugwash@debian.org>
+
+Index: sonic-pi-3.1.0~repack~test-1/app/server/ruby/lib/sonicpi/osc/osc.rb
+===================================================================
+--- sonic-pi-3.1.0~repack~test-1.orig/app/server/ruby/lib/sonicpi/osc/osc.rb
++++ sonic-pi-3.1.0~repack~test-1/app/server/ruby/lib/sonicpi/osc/osc.rb
+@@ -11,6 +11,6 @@
+ # notice is included.
+ #++
+ 
+-require 'fast_osc'
++require_relative '../../../vendor/fast_osc-0.0.12/lib/fast_osc'
+ require_relative 'udp_client'
+ require_relative 'udp_server'
+Index: sonic-pi-3.1.0~repack~test-1/app/server/ruby/test/performance/test_osc_perf.rb
+===================================================================
+--- sonic-pi-3.1.0~repack~test-1.orig/app/server/ruby/test/performance/test_osc_perf.rb
++++ sonic-pi-3.1.0~repack~test-1/app/server/ruby/test/performance/test_osc_perf.rb
+@@ -22,7 +22,7 @@ if ENV['RUN_PERF_TESTS']
+   require_relative "../../lib/sonicpi/osc/oscdecode"
+   require 'benchmark/ips'
+   require 'osc-ruby'
+-  require 'fast_osc'
++  require_relative '../../vendor/fast_osc-0.0.12/lib/fast_osc'
+ 
+   samosc = SonicPi::OSC::OscDecode.new(true)
+   samoscenc = SonicPi::OSC::OscEncode.new(false)
+Index: sonic-pi-3.1.0~repack~test-1/app/server/ruby/vendor/fast_osc-0.0.12/lib/fast_osc.rb
+===================================================================
+--- sonic-pi-3.1.0~repack~test-1.orig/app/server/ruby/vendor/fast_osc-0.0.12/lib/fast_osc.rb
++++ sonic-pi-3.1.0~repack~test-1/app/server/ruby/vendor/fast_osc-0.0.12/lib/fast_osc.rb
+@@ -1,4 +1,4 @@
+-require "fast_osc/version"
++require_relative "fast_osc/version"
+ 
+ module FastOsc
+ 
+@@ -19,12 +19,12 @@ rescue LoadError
+     # Your code goes here...
+   end
+   warn "Failed to load the fast_osc c-extension, falling back to pure Ruby version"
+-  require "fast_osc/pure_ruby_fallback_encode.rb"
+-  require "fast_osc/pure_ruby_fallback_decode.rb"
++  require_relative "fast_osc/pure_ruby_fallback_encode.rb"
++  require_relative "fast_osc/pure_ruby_fallback_decode.rb"
+ end
+ 
+ if ENV['FAST_OSC_USE_FALLBACK'] == "true"
+   warn "Using pure Ruby fallback"
+-  require "fast_osc/pure_ruby_fallback_encode.rb"
+-  require "fast_osc/pure_ruby_fallback_decode.rb"
++  require_relative "fast_osc/pure_ruby_fallback_encode.rb"
++  require_relative "fast_osc/pure_ruby_fallback_decode.rb"
+ end
+Index: sonic-pi-3.1.0~repack~test-1/app/server/ruby/lib/sonicpi/samplebuffer.rb
+===================================================================
+--- sonic-pi-3.1.0~repack~test-1.orig/app/server/ruby/lib/sonicpi/samplebuffer.rb
++++ sonic-pi-3.1.0~repack~test-1/app/server/ruby/lib/sonicpi/samplebuffer.rb
+@@ -14,7 +14,7 @@
+ require_relative "buffer"
+ require_relative "util"
+ require_relative "sox"
+-require 'aubio'
++require_relative '../../vendor/ruby-aubio-prerelease/lib/aubio'
+ 
+ 
+ module SonicPi

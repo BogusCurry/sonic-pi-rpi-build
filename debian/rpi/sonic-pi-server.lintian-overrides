@@ -1,0 +1,2 @@
+# the example files are written as ruby source code.
+sonic-pi-server: executable-not-elf-or-script usr/share/sonic-pi/examples/*/*.rb

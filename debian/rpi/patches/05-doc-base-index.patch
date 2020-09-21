@@ -1,0 +1,44 @@
+Description: create index file per Debian doc-base requirements
+ Debian wants packagers to use doc-base and doc-base requires an index
+ file for HTML documents.
+Forwarded: no
+Author: Hanno Zulla <kontakt@hanno.de>
+Last-Update: 2016-02-11
+
+Index: sonic-pi/app/server/bin/qt-doc.rb
+===================================================================
+--- sonic-pi.orig/app/server/ruby/bin/qt-doc.rb	2016-04-15 14:13:46.033204604 +0200
++++ sonic-pi/app/server/ruby/bin/qt-doc.rb	2016-04-15 14:13:46.033204604 +0200
+@@ -39,6 +39,7 @@
+ 
+ docs = []
+ filenames = []
++booknames = []
+ count = 0
+ 
+ options = {}
+@@ -138,7 +139,9 @@
+   book_body = book[/<body.*?>/]
+   book.gsub!(/<\/?body.*?>/, '')
+   book.gsub!(/<meta http-equiv.*?>/, '')
+-  File.open("#{qt_gui_path}/book/Sonic Pi - #{name.capitalize}" + (lang != "en" ? " (#{lang})" : "") + ".html", 'w') do |f|
++  bookname = "Sonic Pi - #{name.capitalize}" + (lang != "en" ? " (#{lang})" : "")
++  booknames << bookname
++  File.open("#{qt_gui_path}/book/#{bookname}.html", 'w') do |f|
+     f << "<link rel=\"stylesheet\" href=\"../theme/light/doc-styles.css\" type=\"text/css\"/>\n"
+     f << "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n\n"
+     f << book_body << "\n"
+@@ -286,6 +289,13 @@
+   f << "  </qresource>\n</RCC>\n"
+ end
+ 
++File.open("#{qt_gui_path}/book/index.html", 'w') do |f|
++  f << "<link rel=\"stylesheet\" href=\"../theme/light/doc-styles.css\" type=\"text/css\"/>\n"
++  f << "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n\n"
++  f << "<body><ul>\n"
++  f << booknames.sort.map{|n| "<li><a href=\"#{n}.html\">#{n}</a></li>\n"}.join
++  f << "</ul></body>\n"
++end  
+ 
+ ###
+ # Generate info pages

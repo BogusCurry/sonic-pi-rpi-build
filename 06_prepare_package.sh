@@ -128,4 +128,4 @@ install -vDm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 
 # Debian package info
-install -vDm 644 ../debian/* -t "${pkgdir}/debian"
+install -vDm 644 ../debian/makeshift/* -t "${pkgdir}/debian"
