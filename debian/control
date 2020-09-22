@@ -10,6 +10,7 @@ Build-Depends:
  debhelper (>= 9),
  cmake,
  erlang-base,
+ libasound2-dev,
  rake,
  pkg-config,
  qtbase5-dev,
@@ -95,3 +96,11 @@ Description: Audio samples for Sonic Pi
  Sonic Pi is shipped with a default audio sample collection, containing
  musical snippets, sound effects and rhythm loops created by various
  contributors at freesound.org.
+
+Package: osmid
+Architecture: any
+Depends: ${misc:Depends}
+Description: Tool to bridge MIDI and OSC
+ osmid aims to provide a lightweight, portable, easy to use tool to
+ convert MIDI to OSC and OSC to MIDI. It is the software handling the
+ communication with MIDI devices in Sonic Pi.

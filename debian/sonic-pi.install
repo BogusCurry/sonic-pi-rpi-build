@@ -1,4 +1,4 @@
-app/gui/qt/build/sonic-pi        usr/bin/
-debian/extra/sonic-pi.png        usr/share/pixmaps/
-debian/extra/sonic-pi.desktop    usr/share/applications/
-app/gui/qt/theme                 usr/lib/sonic-pi/app/gui/qt/
+app/gui/qt/sonic-pi               usr/bin/
+debian/extra/sonic-pi.png         usr/share/pixmaps/
+debian/extra/sonic-pi.desktop     usr/share/applications/
+app/gui/qt/theme                  usr/lib/sonic-pi/app/gui/qt/

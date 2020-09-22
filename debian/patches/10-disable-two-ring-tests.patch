@@ -1,5 +1,5 @@
 Description: disable two ring tests.
- Two ring tests seem to be failing, possiblly due to rounding errors, this
+ Two ring tests seem to be failing, possibly due to rounding errors, this
  has been reported upstream at https://github.com/samaaron/sonic-pi/issues/1865
 Author: Peter Michael Green <plugwash@debian.org>
 

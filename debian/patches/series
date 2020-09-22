@@ -13,5 +13,6 @@
 13-rpi_color_fix.patch
 14-rpi_error_line_numbers.patch
 15-rpi_transparency.patch
+16-remove-websocket-server.patch
 # 99-gui_paths.patch
 # 99-ruby_paths.patch

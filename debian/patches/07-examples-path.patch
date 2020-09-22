@@ -1,5 +1,5 @@
 Description: add missing examples/ dir in Debian package
- As desribed in this bug report
+ As described in this bug report
  <URL: https://github.com/samaaron/sonic-pi/issues/1229>,
  the Debian package for Sonic Pi 2.10.0 was missing the
  examples/ directory during installation.

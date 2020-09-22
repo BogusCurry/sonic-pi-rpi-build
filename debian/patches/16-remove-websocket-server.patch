@@ -1,0 +1,12 @@
+Index: sonic-pi-3.2.2-1/app/server/ruby/lib/sonicpi/osc/osc.rb
+===================================================================
+--- sonic-pi-3.2.2-1.orig/app/server/ruby/lib/sonicpi/osc/osc.rb
++++ sonic-pi-3.2.2-1/app/server/ruby/lib/sonicpi/osc/osc.rb
+@@ -13,6 +13,6 @@
+
+ require_relative 'udp_client'
+ require_relative 'udp_server'
+-require_relative 'websocket_server'
++#require_relative 'websocket_server'
+ require_relative 'oscencode'
+ require_relative 'oscdecode'

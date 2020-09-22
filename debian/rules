@@ -17,19 +17,22 @@ override_dh_auto_configure:
 		cp -r ruby-beautify    ruby-beautify-legacy && \
 		chmod 644 ruby-beautify-legacy.rb ruby-beautify-legacy/*.rb ruby-beautify-legacy/config/*.rb
 
-	# 	# Compile erlang - OSC and pi_server
-	# 	cd app/server/erlang && \
-	# 		erlc osc.erl pi_server.erl
+	# Compile erlang - OSC and pi_server
+	cd app/server/erlang/ && \
+		erlc osc.erl pi_server.erl
 
 	# 	# Compile ruby extensions
 	# 	cd app/server/ruby/bin && \
 	# 		./compile-extensions.rb && \
 	# 		./i18n-tool.rb -t
 
-	# 	# OSMID
-	# 	cd app/gui/qt/external/osmid/ && \
-	# 		cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S . && \
-	# 		make -j$(nproc) VERBOSE=1 -C build
+	# OSMID
+	cd app/gui/qt/external/osmid/ && \
+		cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S . && \
+		make -j$(nproc) VERBOSE=1 -C build && \
+		mv build/o2m . && \
+		mv build/m2o . && \
+		rm -rf build
 
 	# # Help template
 	cd app/gui/qt/ && \
@@ -41,11 +44,12 @@ override_dh_auto_configure:
 		lrelease SonicPi.pro
 		# lrelease lang/*.ts
 
-	# 	# GUI
-	# 	cd app/gui/qt/ && \
-	# 		cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S . && \
-	# 		make -j$(nproc) VERBOSE=1 -C build
-	# 	)
+	# GUI
+	cd app/gui/qt/ && \
+		cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S . && \
+		make -j$(nproc) VERBOSE=1 -C build && \
+		mv build/sonic-pi . && \
+		rm -rf build
 
 	dh_auto_configure
 
@@ -70,5 +74,8 @@ override_dh_clean:
 		app/gui/qt/lang/*.qm \
 		app/gui/qt/book/ \
 		app/gui/qt/help/ \
-		app/gui/qt/info/
+		app/gui/qt/info/ \
+		app/server/ruby/lib/sonicpi/osc/websocket_server.rb \
+		app/server/ruby/vendor/rubame/
+
 	dh_clean
