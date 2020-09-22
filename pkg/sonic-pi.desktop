@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Exec=${pkgname}
-Icon=/usr/share/pixmaps/${pkgname}.png
-Terminal=false
-Name=Sonic Pi
-Comment=Learn programming and computer science while creating music

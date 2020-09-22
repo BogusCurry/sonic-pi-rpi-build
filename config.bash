@@ -2,9 +2,8 @@
 # Sonic Pi #
 ############
 
-pkgname=sonic-pi
-pkgver=3.2.2
-pkgrel=2
-pkgdesc="The Live Coding Music Synth for Everyone"
-srcdir="${pkgname}-${pkgver}"
-pkgdir="/tmp/${srcdir}"
+export pkgname=sonic-pi
+export pkgver=3.2.2
+export pkgrel=1
+export pkgdesc="The Live Coding Music Synth for Everyone"
+export srcdir="${pkgname}-${pkgver}-${pkgrel}"

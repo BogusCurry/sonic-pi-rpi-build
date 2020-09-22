@@ -1,2 +1,0 @@
-# the sonic-pi binary contains translated resources, but lintian spell-checks with English spellings.
-sonic-pi: spelling-error-in-binary

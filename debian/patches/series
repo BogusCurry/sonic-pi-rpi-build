@@ -1,0 +1,17 @@
+# 01-remove-rpi-volume.patch
+02-do-no-require-unused-ruby-gems.patch
+03-use-debian-gems.patch
+04-rename-ruby-beautify-legacy.patch
+05-doc-base-index.patch
+# 06-paths.patch
+07-examples-path.patch
+# 08-qsci_rename.patch
+# 09-explicitly-use-some-vendor-libs.patch
+10-disable-two-ring-tests.patch
+11-revert-upstream-fhs-support-removal.patch
+12-rpi_8gb_encoding.patch
+13-rpi_color_fix.patch
+14-rpi_error_line_numbers.patch
+15-rpi_transparency.patch
+# 99-gui_paths.patch
+# 99-ruby_paths.patch
