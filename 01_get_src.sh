@@ -4,6 +4,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# shellcheck source=config.bash
 source config.bash
 
 if [[ ! -f "${pkgname}_${pkgver}.orig.tar.gz" ]]; then

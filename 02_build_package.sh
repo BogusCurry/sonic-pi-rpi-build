@@ -4,6 +4,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# shellcheck source=config.bash
 source config.bash
 
 cd "${srcdir}"
@@ -17,6 +18,10 @@ sudo mk-build-deps \
 	--tool='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes' \
 	--remove debian/control
 
-set +e # Fails w/ "clear-sign failed: No secret key" but should still work
+#####################################################################
+# TODO: disable error checking once packaging issues are ironed out #
+#####################################################################
+# Fails w/ "clear-sign failed: No secret key" but should still work
+# set +e
 dpkg-buildpackage -d -aarmhf
 dpkg-buildpackage -d -aarm64
