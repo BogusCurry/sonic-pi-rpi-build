@@ -20,6 +20,7 @@ Build-Depends:
  ruby,
  ruby-activesupport,
  ruby-benchmark-ips,
+ ruby-gettext,
  ruby-hamster,
  ruby-kramdown,
  ruby-minitest,
