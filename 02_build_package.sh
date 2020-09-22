@@ -18,6 +18,9 @@ sudo mk-build-deps \
 	--tool='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes' \
 	--remove debian/control
 
+sudo gem install rubame
+sudo gem install aubio
+
 #####################################################################
 # TODO: disable error checking once packaging issues are ironed out #
 #####################################################################

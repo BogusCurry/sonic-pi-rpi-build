@@ -9,6 +9,7 @@ Uploaders:
 Build-Depends:
  debhelper (>= 9),
  cmake,
+ erlang-base,
  rake,
  pkg-config,
  qtbase5-dev,
@@ -31,6 +32,7 @@ Build-Depends:
  libaubio5,
  libqwt-qt5-dev,
  libqt5svg5-dev,
+ libqt5opengl5-dev,
  libboost-dev
 Standards-Version: 3.9.8
 Homepage: http://sonic-pi.net/

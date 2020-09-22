@@ -13,39 +13,62 @@ export QT_SELECT = qt5
 
 override_dh_auto_configure:
 	cd app/server/ruby/vendor/ruby-beautify/lib && \
-	  cp    ruby-beautify.rb ruby-beautify-legacy.rb && \
-	  cp -r ruby-beautify    ruby-beautify-legacy && \
-	  chmod 644 ruby-beautify-legacy.rb ruby-beautify-legacy/*.rb ruby-beautify-legacy/config/*.rb
+		cp    ruby-beautify.rb ruby-beautify-legacy.rb && \
+		cp -r ruby-beautify    ruby-beautify-legacy && \
+		chmod 644 ruby-beautify-legacy.rb ruby-beautify-legacy/*.rb ruby-beautify-legacy/config/*.rb
 
-	cd app/gui/qt && \
-	  cp -f utils/ruby_help.tmpl ruby_help.h && \
-	  ../../server/ruby/bin/qt-doc.rb -o ruby_help.h
+	# Compile erlang - OSC and pi_server
+	cd app/server/erlang && \
+		erlc osc.erl pi_server.erl
 
-	cd app/gui/qt && \
-	  lrelease SonicPi.pro
+	# Compile ruby extensions
+	cd app/server/ruby/bin && \
+		./compile-extensions.rb && \
+		./i18n-tool.rb -t
+
+	# OSMID
+	cd app/gui/qt/external/osmid/ && \
+		cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S . && \
+		make -j$(nproc) VERBOSE=1 -C build
+
+	# # Help template
+	cd app/gui/qt/ &&
+		cp -vf utils/ruby_help.tmpl utils/ruby_help.h && \
+		../../server/ruby/bin/qt-doc.rb -o utils/ruby_help.h
+
+	# Translations
+	cd app/gui/qt/ &&
+		lrelease SonicPi.pro
+		# lrelease lang/*.ts
+
+	# GUI
+	cd app/gui/qt/ &&
+		cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S . && \
+		make -j$(nproc) VERBOSE=1 -C build
+	)
 
 	dh_auto_configure
 
 override_dh_auto_test:
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	cd app/server/ruby/test ; \
-	  ruby -e 'require "ruby_debian_dev"; include RubyDebianDev; SUPPORTED_RUBY_VERSIONS.each { |v, b| system("#{b} /usr/bin/rake test") or raise "test failed for #{v}" }'
+		ruby -e 'require "ruby_debian_dev"; include RubyDebianDev; SUPPORTED_RUBY_VERSIONS.each { |v, b| system("#{b} /usr/bin/rake test") or raise "test failed for #{v}" }'
 	dh_auto_test
 endif
 
 override_dh_clean:
 	if [ -e app/gui/qt/Makefile ]; then \
-	    make -C app/gui/qt/Makefile clean; \
-	  fi ;
+			make -C app/gui/qt/Makefile clean; \
+		fi ;
 	rm -rf \
-	  app/server/ruby/vendor/ruby-beautify/lib/ruby-beautify-legacy.rb \
-	  app/server/ruby/vendor/ruby-beautify/lib/ruby-beautify-legacy \
-	  app/gui/qt/sonic-pi \
-	  app/gui/qt/Makefile \
-	  app/gui/qt/ruby_help.h \
-	  app/gui/qt/help_files.qrc \
-	  app/gui/qt/lang/*.qm \
-	  app/gui/qt/book/ \
-	  app/gui/qt/help/ \
-	  app/gui/qt/info/
+		app/server/ruby/vendor/ruby-beautify/lib/ruby-beautify-legacy.rb \
+		app/server/ruby/vendor/ruby-beautify/lib/ruby-beautify-legacy \
+		app/gui/qt/build/ \
+		app/gui/qt/Makefile \
+		app/gui/qt/utils/ruby_help.h \
+		app/gui/qt/help_files.qrc \
+		app/gui/qt/lang/*.qm \
+		app/gui/qt/book/ \
+		app/gui/qt/help/ \
+		app/gui/qt/info/
 	dh_clean
